@@ -5,7 +5,7 @@ import 'package:ncl_tech_assesment/model/ship_model.dart';
 import 'package:riverpod/riverpod.dart';
 
 class BlissServiceAPI {
-  String endpoint = "https://www.ncl.com/cms-service/cruise-ships/SKY";
+  String endpoint = "https://www.ncl.com/cms-service/cruise-ships/BLISS";
 
   Future<ShipModel> getBliss() async {
     Response response = await get(Uri.parse(endpoint));

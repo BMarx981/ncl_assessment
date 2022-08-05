@@ -10,13 +10,12 @@ class DetailsPage extends ConsumerWidget {
   const DetailsPage({required this.title, Key? key}) : super(key: key);
 
   FutureProvider<ShipModel> _getShipProvider(String title) {
-    print(title);
     switch (title) {
-      case "Sky":
+      case "sky":
         return skyDataProvider;
-      case "Escape":
+      case "escape":
         return escapeDataProvider;
-      case "Bliss":
+      case "bliss":
         return blissDataProvider;
       default:
         return skyDataProvider;
