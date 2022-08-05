@@ -16,3 +16,16 @@ final escapeDataProvider = FutureProvider<ShipModel>((ref) async {
 final blissDataProvider = FutureProvider<ShipModel>((ref) async {
   return ref.read(blissApiProvider).getBliss();
 });
+
+FutureProvider<ShipModel> getShipProvider(String title) {
+  switch (title) {
+    case "sky":
+      return skyDataProvider;
+    case "escape":
+      return escapeDataProvider;
+    case "bliss":
+      return blissDataProvider;
+    default:
+      return skyDataProvider;
+  }
+}
