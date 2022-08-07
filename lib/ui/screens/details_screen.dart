@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ncl_tech_assesment/model/ship_names.dart';
 
 import '../../providers/data_provider.dart';
+import '../widgets/detail_cards.dart';
 
 class DetailsPage extends ConsumerWidget {
   final String title;
@@ -20,14 +21,15 @@ class DetailsPage extends ConsumerWidget {
           return Center(
             child: Stack(
               children: [
-                Image.network(data.imageUrl),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                ListView(
+                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(data.name),
-                    Text(data.capacity),
-                    Text(data.crew),
-                    Text(data.inauguralDate)
+                    Image.network(data.imageUrl),
+                    DetailCard(text: data.name, title: "Ship Name"),
+                    DetailCard(text: data.capacity, title: "Capacty"),
+                    DetailCard(text: data.crew, title: "Crew size"),
+                    DetailCard(
+                        text: data.inauguralDate, title: "Inaugural Date"),
                   ],
                 ),
               ],

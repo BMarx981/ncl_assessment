@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class ShipModel {
   final String name;
   final String capacity;
@@ -18,8 +20,9 @@ class ShipModel {
     final String cap = json['shipFacts']['passengerCapacity'];
     final String crew = json['shipFacts']['crew'];
     final String date = json['shipFacts']['inauguralDate'];
-    final String imageUrl =
-        json['imagePath'].split("||")[0].replaceAll("\\", "");
+    String imageUrl = json['imagePath'][0].split("||")[0].replaceAll("\\", "");
+
+    imageUrl = "https://www.ncl.com/" + imageUrl;
 
     return ShipModel(
       name: name,
