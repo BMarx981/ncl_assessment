@@ -6,15 +6,15 @@ import 'package:ncl_tech_assesment/model/services/sky_api_service.dart';
 import 'package:riverpod/riverpod.dart';
 
 final skyDataProvider = FutureProvider<ShipModel>((ref) async {
-  return ref.read(skyApiProvider).getSky();
+  return ref.read(skyApiProvider).getService();
 });
 
 final escapeDataProvider = FutureProvider<ShipModel>((ref) async {
-  return ref.read(escapeApiProvider).getEscape();
+  return ref.read(escapeApiProvider).getService();
 });
 
 final blissDataProvider = FutureProvider<ShipModel>((ref) async {
-  return ref.read(blissApiProvider).getBliss();
+  return ref.read(blissApiProvider).getService();
 });
 
 FutureProvider<ShipModel> getShipProvider(String title) {

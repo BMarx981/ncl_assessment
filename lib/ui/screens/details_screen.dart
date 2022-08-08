@@ -20,7 +20,7 @@ class DetailsPage extends ConsumerWidget {
         data: (data) {
           return Column(
             children: [
-              Image.network(data.imageUrl!),
+              Image.network(data.imageUrl),
               Expanded(
                 child: ListView(
                   children: [
