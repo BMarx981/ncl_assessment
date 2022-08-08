@@ -18,22 +18,21 @@ class DetailsPage extends ConsumerWidget {
       ),
       body: _data.when(
         data: (data) {
-          return Center(
-            child: Stack(
-              children: [
-                ListView(
-                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          return Column(
+            children: [
+              Image.network(data.imageUrl),
+              Expanded(
+                child: ListView(
                   children: [
-                    Image.network(data.imageUrl),
                     DetailCard(text: data.name, title: "Ship Name"),
-                    DetailCard(text: data.capacity, title: "Capacty"),
+                    DetailCard(text: data.capacity, title: "Capacity"),
                     DetailCard(text: data.crew, title: "Crew size"),
                     DetailCard(
                         text: data.inauguralDate, title: "Inaugural Date"),
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           );
         },
         error: (err, s) {
