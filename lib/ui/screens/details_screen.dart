@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ncl_tech_assesment/model/ship_names.dart';
 
-import '../../providers/data_provider.dart';
+import '../../model/providers/data_provider.dart';
 import '../widgets/detail_cards.dart';
 
 class DetailsPage extends ConsumerWidget {
@@ -20,7 +20,7 @@ class DetailsPage extends ConsumerWidget {
         data: (data) {
           return Column(
             children: [
-              Image.network(data.imageUrl),
+              Image.network(data.imageUrl!),
               Expanded(
                 child: ListView(
                   children: [

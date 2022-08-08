@@ -1,8 +1,8 @@
-import '../model/ship_model.dart';
-import '../services/bliss_api_service.dart';
-import '../services/escape_api_service.dart';
-import '../services/sky_api_service.dart';
-import 'package:ncl_tech_assesment/services/sky_api_service.dart';
+import '../../model/ship_model.dart';
+import '../../model/services/bliss_api_service.dart';
+import '../../model/services/escape_api_service.dart';
+import '../../model/services/sky_api_service.dart';
+import 'package:ncl_tech_assesment/model/services/sky_api_service.dart';
 import 'package:riverpod/riverpod.dart';
 
 final skyDataProvider = FutureProvider<ShipModel>((ref) async {

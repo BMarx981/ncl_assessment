@@ -14,12 +14,15 @@ class ShipModel {
   });
 
   factory ShipModel.fromJson(Map<String, dynamic> json) {
-    final String name = json['name'] ?? "";
-    final String cap = json['shipFacts']['passengerCapacity'] ?? "";
-    final String crew = json['shipFacts']['crew'] ?? "";
-    final String date = json['shipFacts']['inauguralDate'] ?? "";
-    String imageUrl = "http://www.ncl.com/" +
-        json['imagePath'][0].split("||")[0].replaceAll("\\", "");
+    // cast all fields as non nullable Strings
+    final String name = json['name'] as String;
+    final String cap = json['shipFacts']['passengerCapacity'] as String;
+    final String crew = json['shipFacts']['crew'] as String;
+    final String date = json['shipFacts']['inauguralDate'] as String;
+    String imageUrl =
+        json['imagePath'][0].split("||")[0].replaceAll("\\", "") as String;
+    String mainUrl = "http://www.ncl.com/";
+    imageUrl = mainUrl + imageUrl;
 
     return ShipModel(
       name: name,
