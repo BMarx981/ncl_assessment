@@ -39,7 +39,7 @@ class DetailsPage extends ConsumerWidget {
           debugPrint(s.toString());
           return Text(err.toString());
         },
-        loading: () => const CircularProgressIndicator(),
+        loading: () => const Center(child: CircularProgressIndicator()),
       ), //end _data.when
     );
   }
