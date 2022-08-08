@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class ShipModel {
   final String name;
   final String capacity;
@@ -16,13 +14,12 @@ class ShipModel {
   });
 
   factory ShipModel.fromJson(Map<String, dynamic> json) {
-    final String name = json['name'];
-    final String cap = json['shipFacts']['passengerCapacity'];
-    final String crew = json['shipFacts']['crew'];
-    final String date = json['shipFacts']['inauguralDate'];
-    String imageUrl = json['imagePath'][0].split("||")[0].replaceAll("\\", "");
-
-    imageUrl = "https://www.ncl.com/" + imageUrl;
+    final String name = json['name'] ?? "";
+    final String cap = json['shipFacts']['passengerCapacity'] ?? "";
+    final String crew = json['shipFacts']['crew'] ?? "";
+    final String date = json['shipFacts']['inauguralDate'] ?? "";
+    String imageUrl = "http://www.ncl.com/" +
+        json['imagePath'][0].split("||")[0].replaceAll("\\", "");
 
     return ShipModel(
       name: name,
