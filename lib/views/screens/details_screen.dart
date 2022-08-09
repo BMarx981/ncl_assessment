@@ -18,7 +18,7 @@ class DetailsPage extends ConsumerWidget {
       ),
       body: _data.when(
         data: (data) {
-          // When the provider has data the state has a view
+          // When the provider has data this view is shown
           return Column(
             children: [
               Image.network(data.imageUrl),
