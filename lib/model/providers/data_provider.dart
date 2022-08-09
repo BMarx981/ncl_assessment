@@ -5,6 +5,8 @@ import '../../model/services/sky_api_service.dart';
 import 'package:ncl_tech_assesment/model/services/sky_api_service.dart';
 import 'package:riverpod/riverpod.dart';
 
+import '../ship_names.dart';
+
 final skyDataProvider = FutureProvider<ShipModel>((ref) async {
   return ref.read(skyApiProvider).getService();
 });
@@ -17,15 +19,13 @@ final blissDataProvider = FutureProvider<ShipModel>((ref) async {
   return ref.read(blissApiProvider).getService();
 });
 
-FutureProvider<ShipModel> getShipProvider(String title) {
-  switch (title) {
-    case "sky":
+FutureProvider<ShipModel> getShipProvider(ShipName ship) {
+  switch (ship) {
+    case ShipName.sky:
       return skyDataProvider;
-    case "escape":
+    case ShipName.escape:
       return escapeDataProvider;
-    case "bliss":
+    case ShipName.bliss:
       return blissDataProvider;
-    default:
-      return skyDataProvider;
   }
 }

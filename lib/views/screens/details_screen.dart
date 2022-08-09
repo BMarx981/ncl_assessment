@@ -6,18 +6,19 @@ import '../../model/providers/data_provider.dart';
 import '../widgets/detail_cards.dart';
 
 class DetailsPage extends ConsumerWidget {
-  final String title;
-  const DetailsPage({required this.title, Key? key}) : super(key: key);
+  final ShipName ship;
+  const DetailsPage({required this.ship, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _data = ref.watch(getShipProvider(title));
+    final _data = ref.watch(getShipProvider(ship));
     return Scaffold(
       appBar: AppBar(
-        title: Text(title.capitalize()),
+        title: Text(ship.name.capitalize()),
       ),
       body: _data.when(
         data: (data) {
+          // When the provider has data the state has a view
           return Column(
             children: [
               Image.network(data.imageUrl),
@@ -36,9 +37,11 @@ class DetailsPage extends ConsumerWidget {
           );
         },
         error: (err, s) {
+          // If the data has an error
           debugPrint(s.toString());
           return Text(err.toString());
         },
+        //While loading the state is a CPI
         loading: () => const Center(child: CircularProgressIndicator()),
       ), //end _data.when
     );

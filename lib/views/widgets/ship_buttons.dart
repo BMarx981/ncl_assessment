@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ncl_tech_assesment/ui/screens/details_screen.dart';
+import 'package:ncl_tech_assesment/views/screens/details_screen.dart';
 
 import '../../model/ship_names.dart';
 
 class ShipButtons extends StatelessWidget {
-  final ShipName shipTitle;
+  final ShipName ship;
   final String url;
-  const ShipButtons(this.shipTitle, this.url, {Key? key}) : super(key: key);
+  const ShipButtons(this.ship, this.url, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class ShipButtons extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => DetailsPage(
-                title: shipTitle.name,
+                ship: ship,
               ),
             ),
           );
@@ -64,10 +64,9 @@ class ShipButtons extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        shipTitle.name.capitalize(),
+                        ship.name.capitalize(),
                         style: const TextStyle(
                           fontSize: 40,
-                          // color: Colors.white,
                         ),
                       ),
                     ),
