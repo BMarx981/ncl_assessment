@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:ncl_tech_assesment/model/services/base_service.dart';
+import 'package:ncl_tech_assesment/services/base_service.dart';
 import 'package:ncl_tech_assesment/model/ship_model.dart';
 import 'package:riverpod/riverpod.dart';
 

@@ -1,4 +1,4 @@
-import '../ship_model.dart';
+import '../model/ship_model.dart';
 
 abstract class BaseService {
   String endpoint = "";

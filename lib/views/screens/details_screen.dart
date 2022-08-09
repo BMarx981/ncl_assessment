@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ncl_tech_assesment/model/ship_names.dart';
 
-import '../../model/providers/data_provider.dart';
+import '../../providers/data_provider.dart';
 import '../widgets/detail_cards.dart';
 
 class DetailsPage extends ConsumerWidget {
