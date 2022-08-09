@@ -11,12 +11,12 @@ class DetailsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _data = ref.watch(getShipProvider(ship));
+    final _state = ref.watch(getShipProvider(ship));
     return Scaffold(
       appBar: AppBar(
         title: Text(ship.name.capitalize()),
       ),
-      body: _data.when(
+      body: _state.when(
         data: (data) {
           // When the provider has data this view is shown
           return Column(
@@ -43,7 +43,7 @@ class DetailsPage extends ConsumerWidget {
         },
         //While loading the state is a CPI
         loading: () => const Center(child: CircularProgressIndicator()),
-      ), //end _data.when
+      ), //end _state.when
     );
   }
 }
