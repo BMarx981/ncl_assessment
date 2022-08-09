@@ -1,30 +1,32 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility that Flutter provides. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:flutter/material.dart';
 import 'package:ncl_tech_assesment/main.dart';
+import 'package:network_image_mock/network_image_mock.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Button availability smoke test', (WidgetTester tester) async {
+    //Must use a package to mock Network images because FlutterTests
+    //automatically returns 400 status for Image.network widgets
+    mockNetworkImagesFor(() async {
+      await tester.pumpWidget(const ProviderScope(
+        child: MyApp(),
+      ));
+      //Test if the buttons are available
+      expect(find.text("Sky"), findsOneWidget);
+      expect(find.text("Escape"), findsOneWidget);
+      expect(find.text("Bliss"), findsOneWidget);
+      expect(find.text("Brian"), findsNothing);
+    });
+  });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+  testWidgets('Navigate to Details screen', (WidgetTester tester) async {
+    await tester.pumpWidget(const ProviderScope(
+      child: MyApp(),
+    ));
+    // Tap the sky button and see if we get to Details screen
+    await tester.tap(find.widgetWithText(GestureDetector, 'Sky'));
     await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('Sky'), findsOneWidget);
   });
 }
